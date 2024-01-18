@@ -1,3 +1,4 @@
+import argparse
 import pandas as pd
 import matplotlib.pyplot as plt
 from datetime import date
@@ -8,7 +9,8 @@ import matplotlib.dates as mdates
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 def gantt_chart(file_path=os.path.join(ROOT_DIR, './gantt.csv'),
-                percentage_label="in bar", legend_pos="in plot"):
+                percentage_label="in bar", legend_pos="in plot",
+                save_fig = True):
     """
     INPUT:
         file_path : path-like object
@@ -21,6 +23,8 @@ def gantt_chart(file_path=os.path.join(ROOT_DIR, './gantt.csv'),
             "in plot" to display the legend in the top right corner.
             "under plot" to display the legend under the plot.
             Anything else to disable the legend.
+        save_fig : bool
+            Saves the Gantt Chart as a .png file.
     """
 
     df = pd.read_csv(file_path, delimiter=",", parse_dates=["Start", "End"], dayfirst=True) # Import csv
@@ -75,8 +79,23 @@ def gantt_chart(file_path=os.path.join(ROOT_DIR, './gantt.csv'),
     
     plt.suptitle("Master Thesis Gantt Chart")
     plt.tight_layout()
+    if save_fig:
+        plt.savefig("output/gantt_chart.png")
     plt.show()
     plt.close()
     
-if __name__ == '__main__':
-    gantt_chart()
+def parse_args():
+    parser = argparse.ArgumentParser(description="Generate Gantt Chart.")
+    parser.add_argument("--file_path", default=os.path.join(ROOT_DIR, './gantt.csv'), help="Path to the CSV file containing Gantt Chart data.")
+    parser.add_argument("--percentage_label", default="in bar", choices=["in bar", "after bar", "disable"],
+                        help="Label position for task percentage ('in bar', 'after bar', or 'disable').")
+    parser.add_argument("--legend_pos", default="in plot", choices=["in plot", "under plot", "disable"],
+                        help="Legend position ('in plot', 'under plot', or 'disable').")
+    return parser.parse_args()
+
+def main():
+    args = parse_args()
+    gantt_chart(args.file_path, args.percentage_label, args.legend_pos)
+
+if __name__ == "__main__":
+    main()
