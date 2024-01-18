@@ -6,7 +6,7 @@ This Python script generates a Gantt Chart based on input data provided in a CSV
 
 ## Run the script:
 
- ```bash
+    ```bash
     python gantt_chart.py --file_path path/to/your/data.csv
     ```
 
@@ -14,8 +14,9 @@ This Python script generates a Gantt Chart based on input data provided in a CSV
 
 Ensure your CSV file follows the format below:
 
-```csv
-Task,Category,Start,End,Completion
-Task1, Phase,Phase,01-11-2023,30-11-2023,1
-Task2, Task,Phase,01-12-2023,29-02-2024,0.2
-Task3, Deadline,Phase,01-12-2023,08-01-2024,0.8```
+    ```csv
+    Task,Category,Start,End,Completion
+    Task1,Phase,Phase,01-11-2023,30-11-2023,1
+    Task2,Task,Phase,01-12-2023,29-02-2024,0.2
+    Task3,Deadline,Phase,01-12-2023,08-01-2024,0.8
+    ```

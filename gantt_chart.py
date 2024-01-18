@@ -75,7 +75,7 @@ def gantt_chart(file_path=os.path.join(ROOT_DIR, './gantt.csv'),
     if legend_pos == "in plot":
         plt.legend(handles=legend_elements)
     elif legend_pos == "under plot":
-        plt.legend(handles=legend_elements, loc='upper center', bbox_to_anchor=(0.5, -0.075), ncol=99)
+        plt.legend(handles=legend_elements, loc='upper center', bbox_to_anchor=(0.5, -0.1), ncol=99)
     
     plt.suptitle("Master Thesis Gantt Chart")
     plt.tight_layout()
