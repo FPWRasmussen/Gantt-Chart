@@ -16,7 +16,7 @@ Ensure your CSV file follows the format below:
 
 ```csv
 Task,Category,Start,End,Completion
-Task1,Phase,Phase,01-11-2023,30-11-2023,1
-Task2,Task,Phase,01-12-2023,29-02-2024,0.2
-Task3,Deadline,Phase,01-12-2023,08-01-2024,0.8
+Task1,Phase,01-11-2023,30-11-2023,1
+Task2,Task,01-12-2023,29-02-2024,0.2
+Task3,Deadline,01-12-2023,08-01-2024,0.8
 ```
